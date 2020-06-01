@@ -118,7 +118,15 @@ determinante(f, sg, [la| S], S).
 determinante(f, sg, [una | S], S).
 determinante(f, sg, [mi | S], S).
 determinante(f, sg, [los | S], S).
-determinante(f, sg, [22 | S], S). % una edad
+determinante(f, sg, [28 | S], S). % una edad
+determinante(f, sg, [41 | S], S).
+determinante(f, sg, [39 | S], S).
+determinante(f, sg, [46 | S], S).
+determinante(f, sg, [34 | S], S).
+determinante(f, sg, [35 | S], S).
+determinante(f, sg, [30 | S], S).
+determinante(f, sg, [26 | S], S).
+
 
 /*
 nombre(m, sg, [hombre | S], S).
@@ -136,16 +144,38 @@ verbo(sg, [guarda | S], S).
 Nucleos del sintagma nominal
 */
 nucleo_s_n(sg, [ella | S], S).
+nucleo_s_n(sg, [el | S], S).
 nucleo_s_n(sg, [mujer | S], S).
 nucleo_s_n(sg, [cabello | S], S).
+nucleo_s_n(sg, [pelo | S], S).
 nucleo_s_n(sg, [personaje | S], S).
 nucleo_s_n(sg, [deportes | S], S).
 nucleo_s_n(sg, [deportista | S], S).
 nucleo_s_n(sg, [programar | S], S).
+nucleo_s_n(sg, [comediante | S], S).
+nucleo_s_n(sg, [modelo | S], S).
+nucleo_s_n(sg, [futbolista | S], S).
+nucleo_s_n(sg, [periodista | S], S).
+nucleo_s_n(sg, ["presentador de radio" | S], S).
+nucleo_s_n(sg, ["presentadora de radio" | S], S).
+nucleo_s_n(sg, ["presentadora de tv" | S], S).
+nucleo_s_n(sg, ["presentadora de television" | S], S).
 nucleo_s_n(sg, [alajuela | S], S).
 nucleo_s_n(sg, [heredia | S], S).
+nucleo_s_n(sg, ["san jose" | S], S).
+nucleo_s_n(sg, [puntarenas | S], S).
+nucleo_s_n(sg, ["san ramon" | S], S).
+nucleo_s_n(sg, [colombia | S], S).
 nucleo_s_n(sg, [años | S], S).
-nucleo_s_n(sg, [1998 | S], S). % es un año
+nucleo_s_n(sg, [1992 | S], S). % es un año
+nucleo_s_n(sg, [1990 | S], S).
+nucleo_s_n(sg, [1993 | S], S).
+nucleo_s_n(sg, [1989 | S], S).
+nucleo_s_n(sg, [1985 | S], S).
+nucleo_s_n(sg, [1986 | S], S).
+nucleo_s_n(sg, [1973 | S], S).
+nucleo_s_n(sg, [1980 | S], S).
+nucleo_s_n(sg, [1979 | S], S).
 
 /*
 Nucleos del sintagma verbal
@@ -162,6 +192,8 @@ Nucleos del sintagma adjetival
 
 nucleo_s_a(sg, [negro | S], S).
 nucleo_s_a(sg, [rubio | S], S).
+nucleo_s_a(sg, [cafe | S], S).
+nucleo_s_a(sg, ["cafe claro" | S], S).
 nucleo_s_a(sg, [alta | S], S).
 
 /*
