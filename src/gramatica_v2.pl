@@ -54,6 +54,10 @@ sintagma_nominal(Gen, Num, S0, S):-
 sintagma_nominal(_Gen, Num, S0, S):-
     nucleo_s_n(Num, S0, S).
 
+sintagma_nominal(_Gen, Num, S0, S):-
+    nucleo_s_n(Num, S0, S1),
+    nucleo_s_n(Num, S1, S).
+
 sintagma_nominal(Gen, Num, S0, S):-
     nucleo_s_n(Num, S0, S1),
     sintagma_adjetival(Gen, Num, S1, S).
@@ -61,6 +65,11 @@ sintagma_nominal(Gen, Num, S0, S):-
 sintagma_nominal(Gen, Num, S0, S):-
     determinante(Gen, Num, S0, S1),
     nucleo_s_n(Num, S1, S).
+
+sintagma_nominal(_Gen, Num, S0, S):-
+    nucleo_s_n(Num, S0, S1),
+    enlace_s_p(S1, S2),
+    nucleo_s_n(Num, S2, S).
 
 sintagma_nominal(Gen, Num, S0, S):-
     determinante(Gen, Num, S0, S1),
@@ -90,6 +99,10 @@ Reglas para sintagma adjetival
 sintagma_adjetival(_Gen, Num, S0, S):-
     nucleo_s_a(Num, S0, S).
 
+sintagma_adjetival(_Gen, Num, S0, S):-
+    nucleo_s_a(Num, S0, S1),
+    nucleo_s_a(Num, S1, S).
+
 /*
 Reglas para sintagma verbal
 */
@@ -109,6 +122,11 @@ sintagma_verbal(Num, S0, S):-
     nucleo_s_v(Num, S0, S1),
     sintagma_preposicional(_Gen, Num, S1, S).
 
+sintagma_verbal(Num, S0, S):-
+    nucleo_s_v(Num, S0, S1),
+    nucleo_s_v(Num, S1, S2),
+    sintagma_preposicional(_Gen, Num, S2, S).
+
 
 /*
 Determinantes del sintagma nominal
@@ -118,7 +136,7 @@ determinante(f, sg, [la| S], S).
 determinante(f, sg, [una | S], S).
 determinante(f, sg, [mi | S], S).
 determinante(f, sg, [los | S], S).
-determinante(f, sg, [28 | S], S). % una edad
+determinante(f, sg, [28 | S], S). 
 determinante(f, sg, [41 | S], S).
 determinante(f, sg, [39 | S], S).
 determinante(f, sg, [46 | S], S).
@@ -156,18 +174,20 @@ nucleo_s_n(sg, [comediante | S], S).
 nucleo_s_n(sg, [modelo | S], S).
 nucleo_s_n(sg, [futbolista | S], S).
 nucleo_s_n(sg, [periodista | S], S).
-nucleo_s_n(sg, ["presentador de radio" | S], S).
-nucleo_s_n(sg, ["presentadora de radio" | S], S).
-nucleo_s_n(sg, ["presentadora de tv" | S], S).
-nucleo_s_n(sg, ["presentadora de television" | S], S).
+nucleo_s_n(sg, [presentador | S], S).
+nucleo_s_n(sg, [presentadora | S], S).
+nucleo_s_n(sg, [radio | S], S).
+nucleo_s_n(sg, [tv | S], S).
+nucleo_s_n(sg, [television | S], S).
 nucleo_s_n(sg, [alajuela | S], S).
 nucleo_s_n(sg, [heredia | S], S).
-nucleo_s_n(sg, ["san jose" | S], S).
+nucleo_s_n(sg, [san | S], S).
+nucleo_s_n(sg, [jose | S], S).
 nucleo_s_n(sg, [puntarenas | S], S).
-nucleo_s_n(sg, ["san ramon" | S], S).
+nucleo_s_n(sg, [ramon | S], S).
 nucleo_s_n(sg, [colombia | S], S).
 nucleo_s_n(sg, [años | S], S).
-nucleo_s_n(sg, [1992 | S], S). % es un año
+nucleo_s_n(sg, [1992 | S], S). 
 nucleo_s_n(sg, [1990 | S], S).
 nucleo_s_n(sg, [1993 | S], S).
 nucleo_s_n(sg, [1989 | S], S).
@@ -183,7 +203,8 @@ Nucleos del sintagma verbal
 
 nucleo_s_v(sg, [es | S], S).
 nucleo_s_v(sg, [tiene | S], S).
-nucleo_s_v(sg, ["se dedica" | S], S).  %todo hacer que sea aparte,pero la misma regla
+nucleo_s_v(sg, [se | S], S).
+nucleo_s_v(sg, [dedica | S], S). 
 nucleo_s_v(sg, [nacio | S], S).
 
 /*
@@ -193,7 +214,7 @@ Nucleos del sintagma adjetival
 nucleo_s_a(sg, [negro | S], S).
 nucleo_s_a(sg, [rubio | S], S).
 nucleo_s_a(sg, [cafe | S], S).
-nucleo_s_a(sg, ["cafe claro" | S], S).
+nucleo_s_a(sg, [claro | S], S).
 nucleo_s_a(sg, [alta | S], S).
 
 /*
