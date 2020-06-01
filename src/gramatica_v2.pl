@@ -33,14 +33,14 @@ n(f, sg)    --> [mujer].
 % oracion ([palabra, palabra], []).
 oracion(S0, S):- 
     sintagma_nominal(_Gen, Num, S0, S1),
-    sintagma_verbal(Num, S1, S).
+    sintagma_verbal(Num, S1, S), !.
 
 oracion(S0, S):- 
-    sintagma_verbal(_Num, S0, S).
+    sintagma_verbal(_Num, S0, S), !.
 
 oracion(S0, S):- 
     sujeto(S0, S1),
-    sintagma_verbal(_Num, S1, S).
+    sintagma_verbal(_Num, S1, S), !.
 
 /*
 Reglas para sintagma nominal
