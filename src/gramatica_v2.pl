@@ -237,25 +237,3 @@ Sujetos
 
 sujeto([el | S], S).
 sujeto([ella | S], S).
-
-
-/**
- * Función para covertir la entrada del usuario a una lista de átomos.
- * @param I: String del usuario.
- * @param R: Lista de átomos.
-*/
-
-prepare_input(I, R) :-
-    split_string(I, " ", "", L),
-    list_to_atoms(L, R).
-
-list_to_atoms(X, R) :-
-    list_to_atoms(X, [], R).
-
-list_to_atoms([], L, R) :-
-    reverse(L, R).
-
-list_to_atoms([H | T], L2, R) :-
-    atom_string(A, H),
-    list_to_atoms(T, [A | L2], R).
-
