@@ -127,7 +127,7 @@ sintagma_verbal(Num, S0, S):-
     nucleo_s_v(Num, S1, S2),
     sintagma_preposicional(_Gen, Num, S2, S).
 
-
+ 
 /*
 Determinantes del sintagma nominal
 */
