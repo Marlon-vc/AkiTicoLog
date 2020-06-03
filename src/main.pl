@@ -1,9 +1,9 @@
 preguntas([
     "¿Su personaje es hombre o mujer?", 
-    "¿De qué color tiene el cabello su personaje?",
-    "¿A qué se dedica su personaje?",
-    "¿En cuál provincia nació su personaje?",
-    "¿Cuántos años tiene su personaje?"]).
+    "¿De que color tiene el cabello su personaje?",
+    "¿A que se dedica su personaje?",
+    "¿En cual provincia nacio su personaje?",
+    "¿Cuantos anios tiene su personaje?"]).
 
 personajes([
     [[nombre, "Paola Villegas"],
@@ -24,7 +24,7 @@ personajes([
     [estatura, "1,75"],
     [profesion, "Programador"]],
     
-    [[nombre, "Keyla Sánchez"],
+    [[nombre, "Keyla Sanchez"],
     [edad, "28"],
     [genero, "Mujer"],
     [nacimiento, "1992"],
@@ -37,63 +37,10 @@ personajes([
     [edad, "26"],
     [genero, "Mujer"],
     [nacimiento, "1992"],
-    [lugar_nacimiento, "San Ramon"],
+    [lugar_nacimiento, "Heredia"],
     [color_cabello, "Cafe claro"],
     [estatura, "1,74"],
     [profesion, "Presentadora"]]]).
-
-/*
-copiar(X, X).
-
-tiene_atributo([Atr_P | _], Atr, Valor) :-
-    copiar(Atr_P, [Atr | V]),
-    copiar(V, [Valor | _]).
-
-tiene_atributo([_ | T], Atr, Valor) :-
-    tiene_atributo(T, Atr, Valor).
-
-buscar_con_atr(Personaje, [], Personaje).
-
-buscar_con_atr(Personaje, [[Propiedad | V ] | Resto], Resultado) :-
-    copiar(V, [Valor | _]),
-    tiene_atributo(Personaje, Propiedad, Valor),
-    buscar_con_atr(Personaje, Resto, Resultado).
-
-buscar_con_atr(_, _, _) :-
-    fail.
-
-buscar_personajes([Personaje | _], Q, R) :-
-    buscar_con_atr(Personaje, Q, R).
-
-buscar_personajes([_ | Resto], Q, R) :-
-    buscar_personajes(Resto , Q, R).
-
-buscar(Q, R) :-
-    personajes(X),
-    buscar_personajes(X, Q, R).
-
-buscar_coincidencias(Q, C) :-
-    aggregate_all(count, buscar(Q, _), C).
-*/
-/*
-o(S0, S, Q0, Q):-  %-
-    sn(S0, S1, Q0, Q1), %-
-    sv(S1, S, Q1, Q).
-
-sn(S0, S, Q0, Q) :- %-
-    det(S0, S1),
-    n(S1, S, Q0, Q). %-
-
-sn(S0, S, _, _) :-
-    np(S0, S).
-
-sv(S0, S, Q0, Q) :-
-    v(S0, S1),
-    sn(S1, S, Q0, Q).
-
-sv(S0, S, _, _) :-
-    v(S0, S).
-*/
 
 
 oracion(S0, S, Q0, Q):- 
@@ -106,10 +53,6 @@ oracion(S0, S, Q0, Q):-
 oracion(S0, S, Q0, Q):- 
     sujeto(S0, S1),
     sintagma_verbal(_Num, S1, S, Q0, Q), !.
-
-/*
-Reglas para sintagma nominal
-*/
 
 sintagma_nominal(_Gen, Num, S0, S, Q0, Q):-
     nucleo_s_n(Num, S0, S, Q0, Q).
@@ -337,24 +280,26 @@ write_read_input(M, L) :-
     read(I),
     prepare_input(I, L).
 
-show_result(Query) :-
+show_result(C, Query) :-
+    (C =:= 1 ->
     buscar(Query, Personaje),
     !,
     has_attribute(Personaje, [nombre, Name]),
     write("Su personaje es "),
-    write(Name).
+    write(Name);
+    write("No hay personajes que coincidan."),
+    nl).
 
 
 main_loop([P | R], Props) :-
     write_read_input(P, L),
     oracion(L, [], [], Q),
     append(Props, Q, Query),
-    coincidencias(Query, Cantidad),
-    %if(Cantidad > 1, main_loop(R, Query), show_result(Query)).
-    (Cantidad > 1 ->
-    main_loop(R, Query);
-    show_result(Query)).
+    coincidencias(Query, Resultados),
 
+    (Resultados > 1 ->
+    main_loop(R, Query);
+    show_result(Resultados, Query)).
 
 main_loop(_, Props) :-
     buscar(Props, Personaje),
