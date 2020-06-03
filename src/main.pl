@@ -42,7 +42,7 @@ personajes([
     [estatura, "1,74"],
     [profesion, "Presentadora"]]]).
 
-
+/*
 copiar(X, X).
 
 tiene_atributo([Atr_P | _], Atr, Valor) :-
@@ -74,7 +74,7 @@ buscar(Q, R) :-
 
 buscar_coincidencias(Q, C) :-
     aggregate_all(count, buscar(Q, _), C).
-
+*/
 /*
 o(S0, S, Q0, Q):-  %-
     sn(S0, S1, Q0, Q1), %-
@@ -307,6 +307,32 @@ list_to_atoms([H | T], L2, R) :-
 
 %main_loop(preguntas, propiedades).
 
+has_attribute([Prop | _], Prop).
+
+has_attribute([_ | T], Prop) :-
+    has_attribute(T, Prop).
+
+has_attributes(_, []).
+has_attributes(Character, [Prop | T]) :-
+    has_attribute(Character, Prop),
+    has_attributes(Character, T).
+
+buscar_personaje([Character | _], Props, R) :-
+    has_attributes(Character, Props),
+    Character = R.
+
+buscar_personaje([_ | C], Props, R) :-
+    buscar_personaje(C, Props, R).
+
+buscar(Props, R) :-
+    personajes(X),
+    Props \= [],
+    buscar_personaje(X, Props, R).
+
+coincidencias(Props, C) :-
+    aggregate_all(count, buscar(Props, _), C).
+
+
 main_loop([], _) :-
     write("No se encontró un personaje que coincida con la base de datos.").
 
@@ -319,16 +345,17 @@ main_loop([P | R], Props) :-
     append(Props, Q, Query),
     
     %copiar([Props | Q], Query),
-    buscar_coincidencias(Query, Cantidad),
+    coincidencias(Query, Cantidad),
     Cantidad > 1,
     main_loop(R, Query).
 
 main_loop(_, Props) :-
     buscar(Props, Personaje),
     !,
-    tiene_atributo(Personaje, nombre, Nombre_P),
+    has_attribute(Personaje, [nombre, Name]),
+    %tiene_atributo(Personaje, nombre, Nombre_P),
     write("Su personaje es "),
-    write(Nombre_P),
+    write(Name),
     nl.
 
 start :-
