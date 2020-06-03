@@ -300,7 +300,7 @@ main_loop(_, Props) :-
     write(Name),
     nl.
 
-start :-
+akiTicoLog :-
     write("Piensa en un personaje de costa rica.."), nl,
     preguntas(X),
     main_loop(X, []).
