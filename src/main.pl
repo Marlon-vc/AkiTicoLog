@@ -188,14 +188,14 @@ determinante(f, sg, [la| S], S, Q, Q).
 determinante(f, sg, [una | S], S, Q, Q).
 determinante(f, sg, [mi | S], S, Q, Q).
 determinante(f, sg, [los | S], S, Q, Q).
-determinante(_, sg, [28 | S], S, Q, [[edad, "28"] | Q]). 
-determinante(_, sg, [41 | S], S, Q, [[edad, "41"] | Q]).
-determinante(_, sg, [39 | S], S, Q, [[edad, "39"] | Q]).
-determinante(_, sg, [46 | S], S, Q, [[edad, "46"] | Q]).
-determinante(_, sg, [34 | S], S, Q, [[edad, "34"] | Q]).
-determinante(_, sg, [35 | S], S, Q, [[edad, "35"] | Q]).
-determinante(_, sg, [30 | S], S, Q, [[edad, "30"] | Q]).
-determinante(_, sg, [26 | S], S, Q, [[edad, "26"] | Q]).
+determinante(_, sg, ['28' | S], S, Q, [[edad, "28"] | Q]). 
+determinante(_, sg, ['41' | S], S, Q, [[edad, "41"] | Q]).
+determinante(_, sg, ['39' | S], S, Q, [[edad, "39"] | Q]).
+determinante(_, sg, ['46' | S], S, Q, [[edad, "46"] | Q]).
+determinante(_, sg, ['34' | S], S, Q, [[edad, "34"] | Q]).
+determinante(_, sg, ['35' | S], S, Q, [[edad, "35"] | Q]).
+determinante(_, sg, ['30' | S], S, Q, [[edad, "30"] | Q]).
+determinante(_, sg, ['26' | S], S, Q, [[edad, "26"] | Q]).
 
 /*
 Nucleos del sintagma nominal
@@ -214,15 +214,15 @@ nucleo_s_n(sg, [radio | S], S, Q, Q).
 nucleo_s_n(sg, [tv | S], S, Q, Q).
 nucleo_s_n(sg, [television | S], S, Q, Q).
 nucleo_s_n(sg, [anos | S], S, Q, Q).
-nucleo_s_n(sg, [1992 | S], S, Q, [[nacimiento, "1992"] | Q]). 
-nucleo_s_n(sg, [1990 | S], S, Q, [[nacimiento, "1990"] | Q]).
-nucleo_s_n(sg, [1993 | S], S, Q, [[nacimiento, "1993"] | Q]).
-nucleo_s_n(sg, [1989 | S], S, Q, [[nacimiento, "1989"] | Q]).
-nucleo_s_n(sg, [1985 | S], S, Q, [[nacimiento, "1985"] | Q]).
-nucleo_s_n(sg, [1986 | S], S, Q, [[nacimiento, "1983"] | Q]).
-nucleo_s_n(sg, [1973 | S], S, Q, [[nacimiento, "1973"] | Q]).
-nucleo_s_n(sg, [1980 | S], S, Q, [[nacimiento, "1980"] | Q]).
-nucleo_s_n(sg, [1979 | S], S, Q, [[nacimiento, "1979"] | Q]).
+nucleo_s_n(sg, ['1992' | S], S, Q, [[nacimiento, "1992"] | Q]). 
+nucleo_s_n(sg, ['1990' | S], S, Q, [[nacimiento, "1990"] | Q]).
+nucleo_s_n(sg, ['1993' | S], S, Q, [[nacimiento, "1993"] | Q]).
+nucleo_s_n(sg, ['1989' | S], S, Q, [[nacimiento, "1989"] | Q]).
+nucleo_s_n(sg, ['1985' | S], S, Q, [[nacimiento, "1985"] | Q]).
+nucleo_s_n(sg, ['1986' | S], S, Q, [[nacimiento, "1983"] | Q]).
+nucleo_s_n(sg, ['1973' | S], S, Q, [[nacimiento, "1973"] | Q]).
+nucleo_s_n(sg, ['1980' | S], S, Q, [[nacimiento, "1980"] | Q]).
+nucleo_s_n(sg, ['1979' | S], S, Q, [[nacimiento, "1979"] | Q]).
 nucleo_s_n(sg, [mujer | S], S, Q, [[genero, "Mujer"] | Q]).
 nucleo_s_n(sg, [hombre | S], S, Q, [[genero, "Hombre"] | Q]).
 nucleo_s_n(sg, [comediante | S], S, Q, [[profesion, "Comediante"] | Q]).
