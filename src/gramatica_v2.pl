@@ -123,15 +123,15 @@ nucleo_s_n(sg, [radio | S], S, Q, Q).
 nucleo_s_n(sg, [tv | S], S, Q, Q).
 nucleo_s_n(sg, [television | S], S, Q, Q).
 nucleo_s_n(sg, [años | S], S, Q, Q).
-nucleo_s_n(sg, [1992 | S], S, Q, [[año_nacimiento, "1992"] | Q]). 
-nucleo_s_n(sg, [1990 | S], S, Q, [[año_nacimiento, "1990"] | Q]).
-nucleo_s_n(sg, [1993 | S], S, Q, [[año_nacimiento, "1993"] | Q]).
-nucleo_s_n(sg, [1989 | S], S, Q, [[año_nacimiento, "1989"] | Q]).
-nucleo_s_n(sg, [1985 | S], S, Q, [[año_nacimiento, "1985"] | Q]).
-nucleo_s_n(sg, [1986 | S], S, Q, [[año_nacimiento, "1983"] | Q]).
-nucleo_s_n(sg, [1973 | S], S, Q, [[año_nacimiento, "1973"] | Q]).
-nucleo_s_n(sg, [1980 | S], S, Q, [[año_nacimiento, "1980"] | Q]).
-nucleo_s_n(sg, [1979 | S], S, Q, [[año_nacimiento, "1979"] | Q]).
+nucleo_s_n(sg, [1992 | S], S, Q, [[nacimiento, "1992"] | Q]). 
+nucleo_s_n(sg, [1990 | S], S, Q, [[nacimiento, "1990"] | Q]).
+nucleo_s_n(sg, [1993 | S], S, Q, [[nacimiento, "1993"] | Q]).
+nucleo_s_n(sg, [1989 | S], S, Q, [[nacimiento, "1989"] | Q]).
+nucleo_s_n(sg, [1985 | S], S, Q, [[nacimiento, "1985"] | Q]).
+nucleo_s_n(sg, [1986 | S], S, Q, [[nacimiento, "1983"] | Q]).
+nucleo_s_n(sg, [1973 | S], S, Q, [[nacimiento, "1973"] | Q]).
+nucleo_s_n(sg, [1980 | S], S, Q, [[nacimiento, "1980"] | Q]).
+nucleo_s_n(sg, [1979 | S], S, Q, [[nacimiento, "1979"] | Q]).
 nucleo_s_n(sg, [mujer | S], S, Q, [[genero, "Mujer"] | Q]).
 nucleo_s_n(sg, [hombre | S], S, Q, [[genero, "Hombre"] | Q]).
 nucleo_s_n(sg, [comediante | S], S, Q, [[profesion, "Comediante"] | Q]).
