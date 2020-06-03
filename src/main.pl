@@ -322,22 +322,29 @@ buscar(Props, R) :-
 coincidencias(Props, C) :-
     aggregate_all(count, buscar(Props, _), C).
 
+write_read_input(M, L) :-
+    write(M), nl,
+    read(I),
+    prepare_input(I, L).
 
-main_loop([], _) :-
-    write("No se encontró un personaje que coincida con la base de datos.").
+show_result(Query) :-
+    buscar(Query, Personaje),
+    !,
+    has_attribute(Personaje, [nombre, Name]),
+    write("Su personaje es "),
+    write(Name).
+
 
 main_loop([P | R], Props) :-
-    write(P), 
-    nl,
-    read(I),
-    prepare_input(I, L),
+    write_read_input(P, L),
     oracion(L, [], [], Q),
     append(Props, Q, Query),
-    
-    %copiar([Props | Q], Query),
     coincidencias(Query, Cantidad),
-    Cantidad > 1,
-    main_loop(R, Query).
+    %if(Cantidad > 1, main_loop(R, Query), show_result(Query)).
+    (Cantidad > 1 ->
+    main_loop(R, Query);
+    show_result(Query)).
+
 
 main_loop(_, Props) :-
     buscar(Props, Personaje),
