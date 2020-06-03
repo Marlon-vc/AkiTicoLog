@@ -281,16 +281,6 @@ sujeto([el | S], S).
 sujeto([ella | S], S).
 
 
-
-det([la | S], S).
-n([mujer | S], S, Q, [[sexo, "Mujer"] | Q]).
-n([manzana | S], S, Q, [[comida, "Manzana"] | Q]).
-np([paola | S], S).
-np([ella | S], S).
-v([mira | S], S).
-v([guarda | S], S).
-
-
 prepare_input(I, R) :-
     split_string(I, " ", "", L),
     list_to_atoms(L, R).
