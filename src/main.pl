@@ -8,6 +8,7 @@ preguntas([
 personajes([
     [[nombre, "Paola Villegas"],
     [edad, "22"],
+    [genero, "Mujer"],
     [nacimiento, "1998"],
     [lugar_nacimiento, "Heredia"],
     [color_cabello, "Rubio"],
@@ -16,17 +17,28 @@ personajes([
 
     [[nombre, "Marlon Vega"],
     [edad, "21"],
+    [genero, "Hombre"],
     [nacimiento, "1999"],
     [lugar_nacimiento, "El Salvador"],
-    [color_cabello, "Rubio"],
+    [color_cabello, "Negro"],
     [estatura, "1,75"],
     [profesion, "Programador"]],
     
     [[nombre, "Keyla Sánchez"],
     [edad, "28"],
+    [genero, "Mujer"],
     [nacimiento, "1992"],
-    [lugar_nacimiento, "San Ramón"],
-    [color_cabello, "Café"],
+    [lugar_nacimiento, "San Ramon"],
+    [color_cabello, "Cafe claro"],
+    [estatura, "1,74"],
+    [profesion, "Presentadora"]],
+    
+    [[nombre, "Misinga Vega Villegas"],
+    [edad, "26"],
+    [genero, "Mujer"],
+    [nacimiento, "1992"],
+    [lugar_nacimiento, "San Ramon"],
+    [color_cabello, "Cafe claro"],
     [estatura, "1,74"],
     [profesion, "Presentadora"]]]).
 
@@ -298,15 +310,18 @@ list_to_atoms([H | T], L2, R) :-
 main_loop([], _) :-
     write("No se encontró un personaje que coincida con la base de datos.").
 
-main_loop([Pregunta | R_Preguntas], Props) :-
-    write(Pregunta), nl,
-    read(X),
-    write(X).
-    prepare_input(X, Lista),
-    oracion(Lista, [], [], Propiedades),
-    buscar_coincidencias(Propiedades, Cantidad),
+main_loop([P | R], Props) :-
+    write(P), 
+    nl,
+    read(I),
+    prepare_input(I, L),
+    oracion(L, [], [], Q),
+    append(Props, Q, Query),
+    
+    %copiar([Props | Q], Query),
+    buscar_coincidencias(Query, Cantidad),
     Cantidad > 1,
-    main_loop(R_Preguntas, [Propiedades | Props]).
+    main_loop(R, Query).
 
 main_loop(_, Props) :-
     buscar(Props, Personaje),
