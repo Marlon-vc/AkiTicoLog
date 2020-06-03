@@ -68,11 +68,7 @@ o(S0, S, Q0, Q):-  %-
 sn(S0, S, Q0, Q) :- %-
     det(S0, S1),
     n(S1, S, Q0, Q). %-
-/*
-sn(S0, S, _, _) :- %-
-    det(S0, S1),
-    n(S1, S).
-*/
+
 sn(S0, S, _, _) :-
     np(S0, S).
 
@@ -90,3 +86,46 @@ np([paola | S], S).
 np([ella | S], S).
 v([mira | S], S).
 v([guarda | S], S).
+
+
+prepare_input(I, R) :-
+    split_string(I, " ", "", L),
+    list_to_atoms(L, R).
+
+list_to_atoms(X, R) :-
+    list_to_atoms(X, [], R).
+
+list_to_atoms([], L, R) :-
+    reverse(L, R).
+
+list_to_atoms([H | T], L2, R) :-
+    atom_string(A, H),
+    list_to_atoms(T, [A | L2], R).
+
+%main_loop(preguntas, propiedades).
+
+main_loop([], _) :-
+    write("No se encontró un personaje que coincida con la base de datos.")
+
+main_loop([Pregunta | Preguntas], Props) :-
+    write(Pregunta), nl,
+    read(Respuesta),
+    prepare_input(Respuesta, Lista),
+    o(Lista, [], [], Propiedades),
+    copiar([])
+    buscar_coincidencias(Propiedades, Cantidad),
+    Cantidad > 1,
+    main_loop(Preguntas, ).
+
+main_loop(_, Props) :-
+    buscar(Props, Personaje),
+    !,
+    tiene_atributo(Personaje, nombre, Nombre_P),
+    write("Su personaje es "),
+    write(Nombre_P),
+    nl.
+
+akiTicoLog :-
+    write("Piensa en un personaje de costa rica.."),nl,
+    preguntas(X),
+    main_loop(X).
