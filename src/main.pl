@@ -1,46 +1,110 @@
 preguntas([
-    "¿Su personaje es hombre o mujer?", 
-    "¿De que color tiene el cabello su personaje?",
-    "¿A que se dedica su personaje?",
-    "¿En cual provincia nacio su personaje?",
-    "¿Cuantos anios tiene su personaje?"]).
+    "Su personaje es hombre o mujer?", 
+    "De que color tiene el cabello su personaje?",
+    "A que se dedica su personaje?",
+    "En donde nacio su personaje?",
+    "En que anio nacio su personaje?",
+    "Cuantos anios tiene su personaje?"]).
 
 personajes([
-    [[nombre, "Paola Villegas"],
-    [edad, "22"],
-    [genero, "Mujer"],
-    [nacimiento, "1998"],
-    [lugar_nacimiento, "Heredia"],
-    [color_cabello, "Rubio"],
-    [estatura, "1,62"],
-    [profesion, "Programadora"]],
-
-    [[nombre, "Marlon Vega"],
-    [edad, "21"],
-    [genero, "Hombre"],
-    [nacimiento, "1999"],
-    [lugar_nacimiento, "El Salvador"],
-    [color_cabello, "Negro"],
-    [estatura, "1,75"],
-    [profesion, "Programador"]],
-    
     [[nombre, "Keyla Sanchez"],
-    [edad, "28"],
     [genero, "Mujer"],
-    [nacimiento, "1992"],
+    [profesion, "Conductora de TV"],
     [lugar_nacimiento, "San Ramon"],
-    [color_cabello, "Cafe claro"],
-    [estatura, "1,74"],
-    [profesion, "Presentadora"]],
-    
-    [[nombre, "Misinga Vega Villegas"],
-    [edad, "26"],
-    [genero, "Mujer"],
+    [edad, "28"],
     [nacimiento, "1992"],
+    [color_cabello, "Cafe claro"]],
+    
+    [[nombre, "Gustavo Pelaez"],
+    [genero, "Hombre"],
+    [profesion, "Comediante"],
+    [lugar_nacimiento, "Medellin, Colombia"],
+    [edad, "41"],
+    [nacimiento, "1979"],
+    [color_cabello, "Cafe oscuro"]],
+
+    [[nombre, "Viviana Calderon"],
+    [genero, "Mujer"],
+    [profesion, "Conductora de TV"],
+    [lugar_nacimiento, "San Jose"],
+    [edad, "39"],
+    [nacimiento, "1980"],
+    [color_cabello, "Rubio"]],
+
+    [[nombre, "Marilin Gamboa Gomez"],
+    [genero, "Mujer"],
+    [profesion, "Conductora de TV"],
+    [lugar_nacimiento, "San Jose"],
+    [edad, "46"],
+    [nacimiento, "1973"],
+    [color_cabello, "Cafe oscuro"]],
+
+    [[nombre, "Yiyo Alfaro"],
+    [genero, "Hombre"],
+    [profesion, "Conductor de Radio"],
+    [lugar_nacimiento, "San Jose"],
+    [edad, "34"],
+    [nacimiento, "1986"],
+    [color_cabello, "Negro"]],
+
+    [[nombre, "Natalia Rodriguez"],
+    [genero, "Mujer"],
+    [profesion, "Periodista"],
+    [profesion, "Conductora de TV"],
+    [lugar_nacimiento, "San Jose"],
+    [edad, "35"],
+    [nacimiento, "1985"],
+    [color_cabello, "Negro"]],
+
+    [[nombre, "Cristian Gamboa"],
+    [genero, "Hombre"],
+    [profesion, "Futbolista"],
+    [lugar_nacimiento, "San Jose"],
+    [edad, "30"],
+    [nacimiento, "1989"],
+    [color_cabello, "Negro"]],
+
+    [[nombre, "Karina Ramos"],
+    [genero, "Mujer"],
+    [profesion, "Modelo"],
     [lugar_nacimiento, "Heredia"],
-    [color_cabello, "Cafe claro"],
-    [estatura, "1,74"],
-    [profesion, "Presentadora"]]]).
+    [edad, "26"],
+    [nacimiento, "1993"],
+    [color_cabello, "Cafe claro"]],
+
+    [[nombre, "Coto Hernandez"],
+    [genero, "Hombre"],
+    [profesion, "Modelo"],
+    [lugar_nacimiento, "Esparza, Puntarenas"],
+    [edad, "30"],
+    [nacimiento, "1990"],
+    [color_cabello, "Negro"]],
+
+    [[nombre, "Johanna Solano"],
+    [genero, "Mujer"],
+    [profesion, "Conductora de TV"],
+    [profesion, "Modelo"],
+    [lugar_nacimiento, "San Jose"],
+    [edad, "30"],
+    [nacimiento, "1990"],
+    [color_cabello, "Negro"]],
+
+    [[nombre, "Yeltsin Tejeda"],
+    [genero, "Hombre"],
+    [profesion, "Futbolista"],
+    [lugar_nacimiento, "Puerto Limon"],
+    [edad, "28"],
+    [nacimiento, "1992"],
+    [color_cabello, "Negro"]],
+
+    [[nombre, "Francisco Calvo"],
+    [genero, "Hombre"],
+    [profesion, "Futbolista"],
+    [lugar_nacimiento, "San Jose"],
+    [edad, "28"],
+    [nacimiento, "1992"],
+    [color_cabello, "cafe oscuro"]]
+    ]).
 
 
 oracion(S0, S, Q0, Q):- 
@@ -153,10 +217,10 @@ nucleo_s_n(sg, [deportista | S], S, Q, Q).
 nucleo_s_n(sg, [programar | S], S, Q, Q).
 nucleo_s_n(sg, [presentador | S], S, Q, Q).
 nucleo_s_n(sg, [presentadora | S], S, Q, Q).
-nucleo_s_n(sg, [radio | S], S, Q, Q).
-nucleo_s_n(sg, [tv | S], S, Q, Q).
-nucleo_s_n(sg, [television | S], S, Q, Q).
 nucleo_s_n(sg, [anos | S], S, Q, Q).
+nucleo_s_n(sg, [radio | S], S, Q, [[profesion, "Conductor de Radio"] | Q]).
+nucleo_s_n(sg, [tv | S], S, Q, [[profesion, "Conductora de TV"] | Q]).
+nucleo_s_n(sg, [television | S], S, Q, [[profesion, "Conductora de TV"] | Q]).
 nucleo_s_n(sg, ['1992' | S], S, Q, [[nacimiento, "1992"] | Q]). 
 nucleo_s_n(sg, ['1990' | S], S, Q, [[nacimiento, "1990"] | Q]).
 nucleo_s_n(sg, ['1993' | S], S, Q, [[nacimiento, "1993"] | Q]).
@@ -179,6 +243,8 @@ nucleo_s_n(sg, [jose | S], S, Q, [[lugar_nacimiento, "San Jose"] | Q]).
 nucleo_s_n(sg, [puntarenas | S], S, Q, [[lugar_nacimiento, "Puntarenas"] | Q]).
 nucleo_s_n(sg, [ramon | S], S, Q, [[lugar_nacimiento, "San Ramon"] | Q]).
 nucleo_s_n(sg, [colombia | S], S, Q, [[lugar_nacimiento, "Colombia"] | Q]).
+nucleo_s_n(sg, [puerto | S], S, Q, Q).
+nucleo_s_n(sg, [limon | S], S, Q, [[lugar_nacimiento, "Puerto Limon"] | Q]).
 
 /*
 Nucleos del sintagma verbal
@@ -238,7 +304,6 @@ list_to_atoms([H | T], L2, R) :-
     atom_string(A, H),
     list_to_atoms(T, [A | L2], R).
 
-%main_loop(preguntas, propiedades).
 
 has_attribute([Prop | _], Prop).
 
@@ -291,14 +356,11 @@ main_loop([P | R], Props) :-
     main_loop(R, Query);
     show_result(Resultados, Query)).
 
-main_loop(_, Props) :-
-    buscar(Props, Personaje),
+main_loop(_, _) :-
     !,
-    has_attribute(Personaje, [nombre, Name]),
-    %tiene_atributo(Personaje, nombre, Nombre_P),
-    write("Su personaje es "),
-    write(Name),
+    write("No se encontraron coincidencias."), 
     nl.
+
 
 akiTicoLog :-
     write("Piensa en un personaje de costa rica.."), nl,
